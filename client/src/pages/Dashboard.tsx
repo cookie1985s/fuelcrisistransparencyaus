@@ -505,6 +505,7 @@ const FLAGS:Record<string,string>={SA:"🇸🇦",QA:"🇶🇦",OM:"🇴🇲",EG:
 
 // ─── CRISIS TIMELINE ──────────────────────────────────────────────────────────
 const CRISIS_TIMELINE = [
+  {date:"Jun 21, 2026",label:"US Treasury Bond Sell-Off — AU Super Funds at Risk",severity:"critical_alert",desc:"Australian superannuation funds hold approximately $870 billion in US market exposure — the overwhelming majority of it unhedged — meaning that as foreign governments including China, Japan and Saudi Arabia collectively offloaded $138 billion in US Treasury bonds in March 2026 alone, the retirement savings of millions of Australians fell in value in direct proportion. With the 30-year US Treasury yield now at a 19-year high of 5.2%, this is not a distant financial risk: it is an active wealth shock to the nest eggs that working Australians cannot afford to lose. Read the full 13-page briefing document for worldwide context.",pdfUrl:"/US-Treasury-Bond-Crisis-Global-Fuel-Shock-2026.pdf"},
   {date:"Feb 28, 2026",label:"Op. Epic Fury",severity:"critical",desc:"US and Israel launch Operation Epic Fury. Strait of Hormuz effectively closed to commercial tanker traffic. Gulf oil exports drop 60–71% by mid-March 2026."},
   {date:"Mar 3, 2026",label:"QatarEnergy halts",severity:"critical",desc:"Missile strike on Qatar LNG facilities. QatarEnergy halts urea, methanol, LNG and polymer production. World's largest urea plant offline. Qatar AU exports: −85%."},
   {date:"Mar 2026",label:"Brent crude +65%",severity:"critical",desc:"Brent crude surges 65% by end of March — largest monthly oil price increase ever recorded. Saudi Aramco Safaniya offshore field shut down (−20% Saudi output)."},
@@ -1159,19 +1160,44 @@ function CrisisTimeline(){
             <div className="absolute left-[14px] top-3 bottom-3 w-0.5 bg-slate-700/60"/>
             <div className="space-y-3">
               {[...CRISIS_TIMELINE].reverse().map((ev,i)=>{
+                const isCritAlert=ev.severity==="critical_alert";
                 const isCrit=ev.severity==="critical";
                 return(
                   <div key={i} className="flex gap-3 relative">
-                    <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center z-10 relative mt-0.5 ${isCrit?"bg-red-900/80 border border-red-700":"bg-amber-900/60 border border-amber-700/60"}`}>
-                      {isCrit?<AlertTriangle className="w-3.5 h-3.5 text-red-400"/>:<Info className="w-3.5 h-3.5 text-amber-400"/>}
-                    </div>
-                    <div className={`flex-1 rounded-lg p-3 border ${isCrit?"bg-red-950/20 border-red-800/40":"bg-amber-950/15 border-amber-800/30"}`}>
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <span className="text-[10px] font-mono text-slate-400">{ev.date}</span>
-                        <span className={`text-xs font-semibold ${isCrit?"text-red-300":"text-amber-300"}`}>{ev.label}</span>
+                    {isCritAlert?(
+                      <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center z-10 relative mt-0.5 bg-red-600/90 border-2 border-red-400 shadow-[0_0_10px_rgba(239,68,68,0.7)] animate-pulse">
+                        <AlertTriangle className="w-3.5 h-3.5 text-white"/>
                       </div>
-                      <p className="text-xs text-slate-400 leading-relaxed">{ev.desc}</p>
-                    </div>
+                    ):(
+                      <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center z-10 relative mt-0.5 ${isCrit?"bg-red-900/80 border border-red-700":"bg-amber-900/60 border border-amber-700/60"}`}>
+                        {isCrit?<AlertTriangle className="w-3.5 h-3.5 text-red-400"/>:<Info className="w-3.5 h-3.5 text-amber-400"/>}
+                      </div>
+                    )}
+                    {isCritAlert?(
+                      <div className="flex-1 rounded-lg p-3 border-2 border-red-500/70 bg-red-950/40 shadow-[0_0_12px_rgba(239,68,68,0.15)] ring-1 ring-red-500/20">
+                        <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                          <span className="text-[10px] font-mono text-slate-400">{ev.date}</span>
+                          <span className="text-[9px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded bg-red-500 text-white shadow-sm">⚠ CRITICAL ALERT</span>
+                          <span className="text-xs font-semibold text-red-200">{ev.label}</span>
+                        </div>
+                        <p className="text-xs text-slate-300 leading-relaxed mb-2">{ev.desc}</p>
+                        {(ev as any).pdfUrl&&(
+                          <a href={(ev as any).pdfUrl} target="_blank" rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-red-600 hover:bg-red-500 px-3 py-1.5 rounded-lg transition-colors">
+                            <span>Read Full Report (13 pages)</span>
+                            <span>→</span>
+                          </a>
+                        )}
+                      </div>
+                    ):(
+                      <div className={`flex-1 rounded-lg p-3 border ${isCrit?"bg-red-950/20 border-red-800/40":"bg-amber-950/15 border-amber-800/30"}`}>
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <span className="text-[10px] font-mono text-slate-400">{ev.date}</span>
+                          <span className={`text-xs font-semibold ${isCrit?"text-red-300":"text-amber-300"}`}>{ev.label}</span>
+                        </div>
+                        <p className="text-xs text-slate-400 leading-relaxed">{ev.desc}</p>
+                      </div>
+                    )}
                   </div>
                 );
               })}
