@@ -1,0 +1,133 @@
+@import "leaflet/dist/leaflet.css";
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background: deep navy-slate — finance/intelligence dashboard */
+    --background: 220 28% 10%;
+    --foreground: 210 20% 90%;
+
+    --card: 220 25% 13%;
+    --card-foreground: 210 20% 90%;
+
+    --popover: 220 25% 13%;
+    --popover-foreground: 210 20% 90%;
+
+    /* Primary: amber/gold — alert/warning color prominent */
+    --primary: 38 92% 55%;
+    --primary-foreground: 220 28% 10%;
+
+    --secondary: 220 22% 20%;
+    --secondary-foreground: 210 20% 75%;
+
+    --muted: 220 22% 18%;
+    --muted-foreground: 210 15% 55%;
+
+    --accent: 200 80% 45%;
+    --accent-foreground: 210 20% 95%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 22%;
+    --input: 220 22% 18%;
+    --ring: 38 92% 55%;
+
+    --radius: 0.5rem;
+
+    /* Custom semantic tokens */
+    --color-teal: #20808d;
+    --color-rust: #a84b2f;
+    --color-gold: #f5a623;
+    --color-green: #4caf7d;
+    --color-red: #e05260;
+    --color-alert: #f5a623;
+    --color-surface: hsl(220 25% 13%);
+    --color-surface-alt: hsl(220 22% 18%);
+    --color-border: hsl(220 20% 22%);
+  }
+
+  /* Keep same dark theme in .dark class for ThemeProvider */
+  .dark {
+    --background: 220 28% 10%;
+    --foreground: 210 20% 90%;
+    --card: 220 25% 13%;
+    --card-foreground: 210 20% 90%;
+    --popover: 220 25% 13%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 38 92% 55%;
+    --primary-foreground: 220 28% 10%;
+    --secondary: 220 22% 20%;
+    --secondary-foreground: 210 20% 75%;
+    --muted: 220 22% 18%;
+    --muted-foreground: 210 15% 55%;
+    --accent: 200 80% 45%;
+    --accent-foreground: 210 20% 95%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 22%;
+    --input: 220 22% 18%;
+    --ring: 38 92% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    min-height: 100%;
+    margin: 0;
+    font-family: 'Satoshi', sans-serif;
+  }
+
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .font-tabular {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(220 20% 28%);
+    border-radius: 4px;
+  }
+
+  /* Chart tooltip */
+  .recharts-tooltip-wrapper {
+    outline: none;
+  }
+}
+
+/* Leaflet popup dark theme */
+.au-map-popup .leaflet-popup-content-wrapper {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  color: #f1f5f9;
+}
+.au-map-popup .leaflet-popup-tip {
+  background: #0f172a;
+}
+.au-map-popup .leaflet-popup-content {
+  margin: 12px 14px;
+}
+.leaflet-container {
+  background: #0f172a;
+}
