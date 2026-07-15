@@ -1162,7 +1162,7 @@ function CrisisTimeline(){
           <div className="mt-4 relative">
             <div className="absolute left-[14px] top-3 bottom-3 w-0.5 bg-slate-700/60"/>
             <div className="space-y-3">
-              {[...CRISIS_TIMELINE].reverse().map((ev,i)=>{
+              {CRISIS_TIMELINE.map((ev,i)=>{
                 const isCritAlert=ev.severity==="critical_alert";
                 const isCrit=ev.severity==="critical";
                 return(
