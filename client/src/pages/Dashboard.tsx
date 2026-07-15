@@ -505,6 +505,9 @@ const FLAGS:Record<string,string>={SA:"🇸🇦",QA:"🇶🇦",OM:"🇴🇲",EG:
 
 // ─── CRISIS TIMELINE ──────────────────────────────────────────────────────────
 const CRISIS_TIMELINE = [
+  {date:"Jul 8, 2026",label:"MOU Collapsed — US Strikes Iran, Iran Hits Bahrain & Kuwait",severity:"critical_alert",desc:"Trump declared the US-Iran ceasefire over on July 8–9 after Iran struck three vessels on July 7 and the US cancelled Iran's oil waiver — a core MOU pillar. US airstrikes inside Iran followed; Iran retaliated against US bases in Bahrain and Kuwait — the first Arab Gulf state involvement. Hormuz traffic slowing sharply again. Sources: ABC News, YouTube/PoliticsGuru.",},
+  {date:"Jun 25, 2026",label:"First MOU Breach — Iran Strikes Shipping, Arab Gulf States Targeted",severity:"critical",desc:"Iran struck shipping June 25–26, the first serious MOU breach. The US retaliated militarily. Iran then targeted Bahrain and Kuwait — first time Arab Gulf states were directly struck. Arab capitals recalibrate as Iran warned MOU would collapse during Israel-Lebanon talks."},
+  {date:"Jun 17, 2026",label:"US-Iran MOU Signed — Hormuz Reopened Under 60-Day Framework",severity:"critical",desc:"US and Iran signed a 14-point MOU June 17–18, a 60-day ceasefire framework. The Strait partially reopened June 18–19 with 25 vessels crossing including 4 Saudi supertankers (~8 million barrels). ~550 ships backlogged; 80 mines required clearing from the central Hormuz lane."},
   {date:"Jun 21, 2026",label:"US Treasury Bond Sell-Off — AU Super Funds at Risk",severity:"critical_alert",desc:"Australian superannuation funds hold approximately $870 billion in US market exposure — the overwhelming majority of it unhedged — meaning that as foreign governments including China, Japan and Saudi Arabia collectively offloaded $138 billion in US Treasury bonds in March 2026 alone, the retirement savings of millions of Australians fell in value in direct proportion. With the 30-year US Treasury yield now at a 19-year high of 5.2%, this is not a distant financial risk: it is an active wealth shock to the nest eggs that working Australians cannot afford to lose. Read the full 13-page briefing document for worldwide context.",pdfUrl:"/US-Treasury-Bond-Crisis-Global-Fuel-Shock-2026.pdf"},
   {date:"Feb 28, 2026",label:"Op. Epic Fury",severity:"critical",desc:"US and Israel launch Operation Epic Fury. Strait of Hormuz effectively closed to commercial tanker traffic. Gulf oil exports drop 60–71% by mid-March 2026."},
   {date:"Mar 3, 2026",label:"QatarEnergy halts",severity:"critical",desc:"Missile strike on Qatar LNG facilities. QatarEnergy halts urea, methanol, LNG and polymer production. World's largest urea plant offline. Qatar AU exports: −85%."},
@@ -1511,14 +1514,14 @@ const STATE_STATUS: Record<string, {
   diesel: string; unleaded: string; note: string; updated: string;
   stationsAffected?: number; pctAffected?: string;
 }> = {
-  SA:  { level:"severe",   stationsAffected:46, pctAffected:"6.3%", diesel:"SEVERE — 46 stations out, LPG/diesel dominant", unleaded:"MODERATE — On the Run chain worst hit (18 sites)", note:"SA worst-affected state by percentage (6.3% of tracked stations). Independent stations account for 71% of affected sites. On the Run has 18 affected sites (43% of SA outages). LPG 42% of outages, diesel+premium diesel 31%. $40M SA strategic reserve (Port Bonython, IOR). SA excise cut +5.7c/L expires Jun 30.", updated:"Jun 19 2026" },
-  QLD: { level:"moderate", stationsAffected:32, pctAffected:"1.8%", diesel:"MODERATE — 32 stations, regional supply improving", unleaded:"MODERATE — 40M litres Freedom Fuels arriving Jun", note:"Fed govt secured 40M litres diesel via Freedom Fuels for QLD distribution. SEQ metro improving. Cairns, Townsville, Mt Isa still constrained. Ampol Lytton deferred maintenance to Aug to stay online. SWQROC regional tracker shows most outback stations operational.", updated:"Jun 19 2026" },
-  NSW: { level:"moderate", stationsAffected:48, pctAffected:"1.5%", diesel:"MODERATE — 48 stations, diesel/LPG dominant", unleaded:"MODERATE — 7-Eleven has most sites (9)", note:"48 stations affected (highest count nationally). 7-Eleven has most NSW sites (9 stations, 18%). Diesel and premium diesel 25% of NSW outages. National Cabinet briefed Jun 18 on NSW shortages. Regional NSW and rural single-station towns remain most vulnerable. Diesel ~$2.06/L (down from $3.00 peak).", updated:"Jun 19 2026" },
-  VIC: { level:"watch",    stationsAffected:24, pctAffected:"1.3%", diesel:"WATCH — LPG/U98 dominant, diesel easing", unleaded:"WATCH — United has most sites (6)", note:"VIC improving — LPG (35%) and U98 (18%) dominate outages, diesel only 9%. Geelong refinery RCCU restart due mid-June (targeted, not yet confirmed at full 90% capacity). Metro supply stable. Fuel 'on watch' (demoted from shortage May 30). Retail diesel -35% off March peak.", updated:"Jun 19 2026" },
-  WA:  { level:"watch",    stationsAffected:7,  pctAffected:"0.8%", diesel:"WATCH — lowest outage rate nationally (0.8%)", unleaded:"OK — Perth metro well supplied", note:"WA lowest outage rate in country per WA Govt weekly update (Jun 12). Fed govt secured extra 50M litres diesel for WA via BP (Jun 9). Perth retail diesel among cheapest nationally. 20M litres state-owned diesel reserve held at Kalgoorlie, Esperance, Geraldton, Kwinana. Remote Kimberley/Pilbara still monitored. 1,755 fuel sites inspected since Mar; 94 infringements issued.", updated:"Jun 19 2026" },
-  NT:  { level:"watch",    stationsAffected:1,  pctAffected:"0.5%", diesel:"WATCH — Ti Tree Roadhouse U95 out", unleaded:"WATCH — remote communities monitored", note:"Significant improvement from critical status. Only 1 station currently reporting outage (Ti Tree Roadhouse, U95). Remote community risk remains elevated — ALPA previously warned 'catastrophic' impact if disruption persists. Darwin metro supply restored. 24-hr fuel price lock from Apr 20. Fines up to $94,500 for price gouging.", updated:"Jun 19 2026" },
-  TAS: { level:"watch",    stationsAffected:4,  pctAffected:"1.5%", diesel:"WATCH — 4 stations, Bass Strait adds transit risk", unleaded:"WATCH — Hobart 175.8c/L avg", note:"Bass Strait shipping dependency adds 1–2 day transit risk. No widespread outages. Hobart highest retail petrol price nationally at 175.8c/L. Fed govt additional diesel shipments included TAS distribution.", updated:"Jun 19 2026" },
-  ACT: { level:"watch",    stationsAffected:2,  pctAffected:"2.9%", diesel:"WATCH — 2 stations, supply maintained", unleaded:"OK — Canberra 170.6c/L avg", note:"Only 2 stations affected despite 2.9% rate (small tracked base). Supplied via NSW pipeline. Canberra retail 170.6c/L avg. No formal shortages. Jun 30 excise expiry will add ~26c/L mechanically if not renewed — PM decision pending.", updated:"Jun 19 2026" },
+  SA:  { level:"severe",   stationsAffected:44, pctAffected:"6.1%", diesel:"TIGHT — MOU collapse likely to worsen diesel supply", unleaded:"TIGHT — MOU collapse likely to worsen diesel supply", note:"SA worst-affected state by percentage (6.1% of tracked stations). MOU collapse (Jul 8) likely to worsen diesel supply outlook further.", updated:"Jul 10 2026" },
+  NSW: { level:"severe",   stationsAffected:58, pctAffected:"1.8%", diesel:"TIGHT — MOU collapse tightened outlook", unleaded:"MODERATE — MOU collapse tightened outlook", note:"58 stations affected — highest count nationally. MOU collapse tightened outlook; hotspots Mendooran, Dubbo, Albury, Kempsey.", updated:"Jul 10 2026" },
+  QLD: { level:"moderate", stationsAffected:41, pctAffected:"2.2%", diesel:"PATCHY — BP Roma, Freedom Fuels Bundaberg/Nambour", unleaded:"MODERATE — BP Roma, Freedom Fuels Bundaberg/Nambour", note:"BP Roma and Freedom Fuels sites in Bundaberg/Nambour remain the key regional pressure points.", updated:"Jul 10 2026" },
+  VIC: { level:"moderate", stationsAffected:32, pctAffected:"1.8%", diesel:"WATCH — Geelong RCCU partial restart", unleaded:"STABLE — Geelong RCCU partial restart", note:"Geelong refinery RCCU partial restart underway; metro supply holding stable.", updated:"Jul 10 2026" },
+  WA:  { level:"watch",    stationsAffected:2,  pctAffected:"0.2%", diesel:"SECURE", unleaded:"SECURE", note:"Lowest outage rate nationally. Supply remains secure across both fuel types.", updated:"Jul 10 2026" },
+  NT:  { level:"watch",    stationsAffected:0,  pctAffected:"0%",   diesel:"STABLE", unleaded:"STABLE", note:"No stations currently reporting outages. Supply stable.", updated:"Jul 10 2026" },
+  TAS: { level:"ok",       stationsAffected:4,  pctAffected:"1.4%", diesel:"SECURE", unleaded:"SECURE", note:"No widespread outages. Supply remains secure.", updated:"Jul 10 2026" },
+  ACT: { level:"ok",       stationsAffected:1,  pctAffected:"1.5%", diesel:"STABLE", unleaded:"STABLE", note:"Only 1 station affected. Supply stable via NSW pipeline.", updated:"Jul 10 2026" },
 };
 
 const LEVEL_COLOR: Record<string,{bg:string;border:string;text:string;dot:string}> = {
@@ -1617,7 +1620,7 @@ function FuelShortagePanel() {
           <div className="flex-1">
             <div className="text-sm font-bold text-slate-100 mb-1">Fuel Shortage Tracker — Australia</div>
             <div className="text-xs text-slate-400 leading-relaxed">
-              State-level supply status based on PetrolPulse live government-feed data (updated every 30 min), ACCC weekly reports, WA Government weekly briefs, and verified news sources. As of Jun 19 2026: 164 stations reporting outages nationally (211 fuel-type outages). SA worst by % (6.3%), NSW highest count (48 stations). Data auto-refreshes weekly via scheduled task — next update Fri Jun 27 2026. Station-level data is community-submitted and unverified.
+              State-level supply status based on PetrolPulse live government-feed data (updated every 30 min), ACCC weekly reports, WA Government weekly briefs, and verified news sources. As of Jul 10 2026: 173 stations reporting outages nationally (221 fuel-type outages). SA worst by % (6.1%), NSW highest count (58 stations). MOU collapsed Jul 8 — forward supply disruptions expected. Data auto-refreshes weekly via scheduled task — next update Fri Jul 17 2026. Station-level data is community-submitted and unverified.
             </div>
             <div className="flex flex-wrap gap-3 mt-2 text-xs">
               <a href="https://petrolpulse.com.au/fuel-shortage" target="_blank" rel="noopener noreferrer" className="text-teal-400 hover:underline">PetrolPulse — live outage map</a>
@@ -1642,7 +1645,7 @@ function FuelShortagePanel() {
             <span className={LEVEL_COLOR[l].text}>{LEVEL_LABEL[l]}</span>
           </span>
         ))}
-        <span className="ml-auto text-slate-600">Based on PetrolPulse live data, ACCC, WA Govt weekly brief · Updated Jun 19 2026</span>
+        <span className="ml-auto text-slate-600">Based on PetrolPulse live data, ACCC, WA Govt weekly brief · Updated Jul 10 2026</span>
       </div>
 
       {/* State grid */}
@@ -1858,7 +1861,7 @@ function FuelShortagePanel() {
       {/* Disclaimer */}
       <div className="text-xs text-slate-600 leading-relaxed text-center pb-2">
         State data: <a href="https://petrolpulse.com.au/fuel-shortage" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:underline">PetrolPulse</a> (Jun 19 2026, 164 stations / 211 fuel-type outages) · <a href="https://www.accc.gov.au/consumers/petrol-and-fuel/fuel-price-monitoring-during-the-current-middle-eastern-conflict" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:underline">ACCC Weekly Monitor</a> · <a href="https://www.wa.gov.au/government/publications/fuel-security-wa-government-weekly-fuel-update" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:underline">WA Govt Weekly Brief</a> · <a href="https://global-energy-flow.com/shortages/australia/" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:underline">Global Energy Flow</a> · <a href="https://amec.org.au/resources-hub/fuel-security/" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:underline">AMEC</a> · <a href="https://www.lastdrop.au" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:underline">Last Drop AU</a>.
-        Community reports are unverified. Weekly auto-update via scheduled cron — next run Fri Jun 27 2026.
+        Community reports are unverified. Weekly auto-update via scheduled cron — next run Fri Jul 17 2026.
       </div>
     </div>
   );
@@ -2589,6 +2592,25 @@ const MONTHLY_SNAPSHOTS: MonthSnapshot[] = [
       "https://www.theguardian.com/world/2026/jun/19/normal-shipping-will-not-resume-in-strait-of-hormuz-until-mines-cleared",
       "https://www.cnbc.com/2026/06/18/strait-hormuz-reopening-shipping-oil.html",
       "https://www.perthnow.com.au/news/prime-minister-anthony-albanese-is-expected-to-make-a-decision-on-fuel-excise-extension-in-coming-days-c-22459814",
+    ],
+  },
+  {
+    id: "jul2026", label: "Jul 2026", date: "July 2026 — Current",
+    trafficPct: 12, tankerCount: 90, transitCount: 6,
+    headline: "MOU Collapsed Jul 8: Iran hits vessels, US strikes Iran, Arab Gulf states targeted — Hormuz re-closing.",
+    keyEvents: [
+      "Jun 17–18: US-Iran 14-point MOU signed; Strait partially reopened with 25 vessels crossing",
+      "Jun 25–26: Iran strikes shipping — first MOU breach; US retaliates; Iran targets Bahrain and Kuwait (first Arab Gulf involvement)",
+      "Late Jun: Iran warns MOU collapse during Israel-Lebanon talks; Arab capitals recalibrate",
+      "Jul 7: Iran hits three vessels; US cancels Iran's oil waiver — a core MOU pillar undermined",
+      "Jul 8–9: US airstrikes inside Iran; Iran strikes US bases in Bahrain and Kuwait; Trump declares ceasefire over",
+      "Early Jul: Hormuz traffic slows sharply again; MOU collapse mainstream in policy and media",
+    ],
+    sources: [
+      "https://abcnews.com/Politics/us-iran-ceasefire-mou-broke-timeline/story?id=134622392",
+      "https://www.youtube.com/watch?v=MMslqAgoeLs",
+      "https://oilprice.com/Energy/Crude-Oil/Half-Open-Half-Closed-Strait-of-Hormuz-Baffles-Oil-Markets.html",
+      "https://www.reuters.com/business/energy/",
     ],
   },
 ];
